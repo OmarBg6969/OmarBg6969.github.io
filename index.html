@@ -3,241 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Photographe & Vidéaste Professionnel</title>
+    <title>Galerie - Portfolio Photographe & Vidéaste</title>
+    <meta name="description" content="Portfolio professionnel d'Omar Bougamha - Photographe et vidéaste créatif">
+    <meta name="keywords" content="photographie, vidéographie, portfolio, Omar Bougamha">
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://www.youtube.com">
+    
     <style>
+        /* Variables CSS améliorées */
+        :root {
+            /* Couleurs - Mode sombre */
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #2a2a2a;
+            --bg-glass: rgba(26, 26, 26, 0.8);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent: #ff6b35;
+            --accent-hover: #ff8a5b;
+            --accent-glow: rgba(255, 107, 53, 0.3);
+            --border: #333333;
+            --shadow: rgba(0, 0, 0, 0.5);
+            --shadow-intense: rgba(0, 0, 0, 0.8);
+            --success: #10b981;
+            --error: #ef4444;
+            
+            /* Animations */
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Espacements */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            
+            /* Rayons de bordure */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 25px;
+            
+            /* Z-index */
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal: 1040;
+            --z-popover: 1050;
+            --z-tooltip: 1060;
+        }
+
+        /* Mode clair amélioré */
+        .light-mode {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.9);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --accent: #ff6b35;
+            --accent-hover: #ff8a5b;
+            --accent-glow: rgba(255, 107, 53, 0.3);
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-intense: rgba(0, 0, 0, 0.3);
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        /* Reset et base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --bg-card: #2a2a2a;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --accent: #ff6b35;
-            --accent-hover: #ff8a5b;
-            --border: #333333;
-            --shadow: rgba(0, 0, 0, 0.5);
-        }
-
-        .light-mode {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --bg-card: #ffffff;
-            --text-primary: #2c3e50;
-            --text-secondary: #6c757d;
-            --accent: #e74c3c;
-            --accent-hover: #c0392b;
-            --border: #e9ecef;
-            --shadow: rgba(0, 0, 0, 0.1);
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
-            transition: all 0.3s ease;
+            transition: background-color var(--transition-smooth), color var(--transition-smooth);
+            font-feature-settings: "liga" 1, "kern" 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .light-mode header {
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--accent);
-            text-decoration: none;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .theme-toggle:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* About Section */
-        .about {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            padding: 10rem 2rem 8rem;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(255, 107, 53, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            opacity: 0.7;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .about-text h2 {
-            font-size: 3rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1.5s ease-out;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            animation: fadeInUp 1.5s ease-out 0.3s both;
-        }
-
-        .skills {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-            animation: fadeInUp 1.5s ease-out 0.6s both;
-        }
-
-        .skill-tag {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 0.4rem 1rem;
-            border-radius: 0;
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: var(--accent);
-            color: white;
-        }
-
-        .about-image {
-            position: relative;
-            border-radius: 50%;
-            overflow: hidden;
-            width: 450px;
-            height: 450px;
-            margin: 0 auto;
-            animation: fadeInUp 1.5s ease-out 0.9s both;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: filter 0.4s ease;
-        }
-
+        /* Animations et keyframes */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -245,14 +113,313 @@
             }
         }
 
-        /* GALLERY SECTION - MOBILE OPTIMISÉ 3 EN LIGNE */
-        .gallery {
-            padding: 8rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { 
+                background-position: -200% 0; 
+            }
+            100% { 
+                background-position: 200% 0; 
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--random-x, 0), var(--random-y, 0)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Header amélioré */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            z-index: var(--z-fixed);
+            padding: var(--space-sm) 0;
+            transition: all var(--transition-smooth);
+            border-bottom: 1px solid var(--border);
+        }
+
+        header.scrolled {
+            padding: var(--space-xs) 0;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 var(--space-lg);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            background: linear-gradient(45deg, var(--accent), var(--accent-hover));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 10px var(--accent-glow));
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            position: relative;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent);
+            opacity: 0;
+            border-radius: var(--radius-sm);
+            transition: opacity var(--transition-fast);
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 0.1;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: all var(--transition-fast);
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-xl);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent);
+            transform: translateX(-100%);
+            transition: transform var(--transition-fast);
+        }
+
+        .theme-toggle:hover::before {
+            transform: translateX(0);
+        }
+
+        .theme-toggle:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        .theme-toggle span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Menu mobile amélioré */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: var(--space-xs);
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .mobile-menu-toggle:hover {
+            background: var(--bg-card);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border);
+            padding: var(--space-lg);
+            z-index: var(--z-dropdown);
+            transition: all var(--transition-smooth);
+        }
+
+        .mobile-nav.active {
+            display: block;
+            top: 70px;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .mobile-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            display: block;
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+
+        .mobile-nav a:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Back button amélioré */
+        .back-button {
+            position: fixed;
+            top: calc(80px + var(--space-sm));
+            left: var(--space-lg);
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-xl);
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            transition: all var(--transition-smooth);
+            z-index: var(--z-sticky);
+            box-shadow: 0 8px 25px var(--accent-glow);
+            backdrop-filter: blur(10px);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px var(--accent-glow);
+        }
+
+        .back-button:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        /* Main content */
+        main {
+            margin-top: 80px;
+            padding: var(--space-lg) 0;
+        }
+
+        .gallery-section {
+            padding: var(--space-2xl) var(--space-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .gallery-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        /* Remplacer le style existant .section-title par celui-ci */
         .section-title {
             text-align: center;
             font-size: 3rem;
@@ -267,715 +434,1043 @@
             background-clip: text;
         }
 
-        .gallery-subtitle {
+        .section-subtitle {
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-secondary);
-            margin-bottom: 5rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            line-height: 1.6;
+            margin-bottom: var(--space-xl);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -20px;
+            bottom: -var(--space-sm);
             left: 50%;
             transform: translateX(-50%);
             width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            height: 4px;
+            background: linear-gradient(45deg, var(--accent), var(--accent-hover));
+            border-radius: 2px;
         }
 
-        /* GRILLE OPTIMISÉE POUR MOBILE - 3 EN LIGNE */
-        .gallery-grid {
+        /* Grilles améliorées */
+        .photos-grid,
+        .videos-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-            max-width: 100%;
-            padding: 0 0.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            background: var(--bg-card);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(255, 107, 53, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
             width: 100%;
-            aspect-ratio: 0.8;
-            display: flex;
-            flex-direction: column;
+            position: relative;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.3),
-                0 0 0 1px rgba(255, 107, 53, 0.3),
-                0 0 30px rgba(255, 107, 53, 0.1);
-        }
-
-        .gallery-image-container {
+        /* Items photos avec animations corrigées */
+        .photo-item {
             position: relative;
             overflow: hidden;
-            flex: 1;
-            min-height: 0;
-            border-radius: 15px 15px 0 0;
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            transition: all var(--transition-slow);
+            cursor: pointer;
+            will-change: transform, box-shadow;
+            transform: translateZ(0);
         }
 
-        .gallery-item img {
+        .photo-item::before {
+            display: none;
+        }
+
+        .photo-item:hover::before {
+            opacity: 1;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 25px 50px var(--shadow-intense),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: all var(--transition-slow);
+            filter: brightness(0.9) contrast(1.1);
+            border-radius: var(--radius-lg);
+            display: block;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1) contrast(1.2) saturate(1.2);
+        }
+
+        .photo-item.loading {
+            background: linear-gradient(
+                90deg,
+                var(--bg-card) 25%,
+                var(--border) 50%,
+                var(--bg-card) 75%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        .photo-item.loading img {
+            opacity: 0;
+        }
+
+        .photo-item.loaded {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .photo-item.loaded img {
+            opacity: 1;
+        }
+
+        /* Items vidéos améliorés */
+        .video-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            aspect-ratio: 16/9;
+            will-change: transform;
+        }
+
+        /* Images de couverture pour vidéos */
+        .video-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: saturate(0.9) contrast(1.1);
+            transition: all var(--transition-slow);
+            filter: brightness(0.9) contrast(1.1);
+            border-radius: var(--radius-lg);
+            display: block;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
-            filter: saturate(1.1) contrast(1.2);
+        .video-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1) contrast(1.2) saturate(1.2);
         }
 
-        .gallery-image-container::before {
-            content: '';
+        /* Bouton play */
+        .play-button {
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(
-                90deg, 
-                transparent 0%, 
-                rgba(255, 255, 255, 0.2) 50%, 
-                transparent 100%
-            );
-            transform: skew(-15deg);
-            transition: left 0.6s ease;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 107, 53, 0.9);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            transition: all var(--transition-smooth);
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            opacity: 0;
             z-index: 2;
         }
 
-        .gallery-item:hover .gallery-image-container::before {
-            left: 150%;
+        .video-item:hover .play-button {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
         }
 
-        .photo-badge {
+        /* Responsive pour bouton play */
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: var(--space-md);
+                justify-content: center;
+                padding: 0 var(--space-sm);
+            }
+
+            .video-item.reel {
+                aspect-ratio: 9/16;
+                max-height: 450px;
+                min-height: 320px;
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+                border-radius: var(--radius-lg);
+                box-shadow: 0 8px 25px var(--shadow);
+            }
+
+            .video-item.reel img {
+                border-radius: var(--radius-lg);
+            }
+
+            /* Vue détaillée reels - mobile CORRIGÉ */
+            .reels-detail-content {
+                flex-direction: column;
+                height: 100%;
+            }
+
+            .reels-video-container {
+                flex: 0 0 45%; /* Réduit de 60% à 45% pour laisser plus de place à la description */
+                padding: var(--space-sm);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #000;
+                min-height: 250px; /* Hauteur minimum pour la vidéo */
+                max-height: 400px; /* Hauteur maximum pour éviter que la vidéo prenne tout l'écran */
+            }
+
+            .reels-video-container video {
+                width: auto;
+                height: 100%;
+                max-height: 100%;
+                max-width: 100%;
+                object-fit: contain;
+                border-radius: var(--radius-md);
+            }
+
+            .reels-description-container {
+                flex: 1;
+                padding: var(--space-md);
+                border-left: none;
+                border-top: 1px solid var(--border);
+                overflow-y: auto;
+                min-height: 0; /* Permet au contenu de déborder si nécessaire */
+                background: var(--bg-primary); /* Assure que l'arrière-plan est visible */
+            }
+
+            /* Amélioration de la lisibilité du contenu */
+            .reels-description-title {
+                font-size: 1.3rem !important;
+                margin-bottom: var(--space-sm) !important;
+                line-height: 1.3;
+            }
+
+            .reels-description-content {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+            }
+
+            .reels-description-content h3 {
+                font-size: 1.1rem !important;
+                margin: var(--space-sm) 0 var(--space-xs) 0 !important;
+            }
+
+            .reels-description-content p {
+                margin-bottom: var(--space-sm) !important;
+            }
+
+            .reels-tech-tags {
+                gap: var(--space-xs);
+                margin-top: var(--space-sm);
+                flex-wrap: wrap;
+            }
+
+            .reels-tech-tag {
+                font-size: 0.8rem;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-sm);
+                padding: 0 var(--space-xs);
+            }
+
+            .video-item.reel {
+                max-height: 400px;
+                min-height: 280px;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            /* Vue détaillée reels - petits écrans CORRIGÉ */
+            .reels-video-container {
+                flex: 0 0 40%; /* Encore plus réduit pour les petits écrans */
+                padding: var(--space-sm);
+                min-height: 200px;
+                max-height: 300px;
+            }
+
+            .reels-description-container {
+                flex: 1;
+                padding: var(--space-sm);
+                overflow-y: auto;
+                /* Assure que la description est visible et scrollable */
+                max-height: calc(60vh); /* Limite la hauteur pour éviter les débordements */
+            }
+
+            .reels-description-title {
+                font-size: 1.1rem !important;
+                margin-bottom: var(--space-xs) !important;
+                line-height: 1.2;
+            }
+
+            .reels-description-content {
+                font-size: 0.85rem !important;
+                line-height: 1.5 !important;
+            }
+
+            .reels-description-content h3 {
+                font-size: 1rem !important;
+                margin: var(--space-xs) 0 4px 0 !important;
+            }
+
+            .reels-description-content p {
+                margin-bottom: 8px !important;
+            }
+
+            .reels-tech-tags {
+                gap: 4px;
+                margin-top: var(--space-xs);
+            }
+
+            .reels-tech-tag {
+                font-size: 0.75rem;
+                padding: 3px 6px;
+            }
+
+            /* Header mobile plus compact */
+            .reels-detail-header {
+                height: 60px; /* Réduit de 80px à 60px */
+                padding: 0 var(--space-sm);
+            }
+
+            .reels-detail-title {
+                font-size: 1rem !important;
+            }
+
+            .reels-detail-close {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            /* Ajuste la position du contenu */
+            .reels-detail-content {
+                top: 60px; /* Adapte à la nouvelle hauteur du header */
+            }
+        }
+
+        /* Orientation paysage sur mobile - NOUVEAU */
+
+        @media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+            .reels-detail-content {
+                flex-direction: row !important;
+            }
+
+            .reels-video-container {
+                flex: 0 0 60% !important;
+                border-right: 1px solid var(--border);
+                border-top: none;
+                max-height: none;
+            }
+
+            .reels-description-container {
+                flex: 1 !important;
+                border-left: none;
+                border-top: none;
+                max-height: calc(100vh - 60px);
+            }
+        }
+        /* Très petits écrans (< 360px) */
+        @media (max-width: 360px) {
+            .video-item.reel {
+                max-height: 350px;
+                min-height: 250px;
+                max-width: 250px;
+            }
+
+            .videos-grid {
+                padding: 0 10px;
+            }
+        }
+
+        /* Écrans plus larges que 768px mais moins de 1024px (tablettes) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .videos-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: var(--space-lg);
+            }
+
+            .video-item.reel {
+                max-height: 500px;
+                min-height: 350px;
+            }
+        }
+
+        /* Amélioration pour orientation paysage sur mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .reels-detail-content {
+                flex-direction: row;
+            }
+
+            .reels-video-container {
+                flex: 0 0 65%;
+                border-right: 1px solid var(--border);
+                border-top: none;
+            }
+
+            .reels-description-container {
+                flex: 1;
+                border-left: none;
+                border-top: none;
+            }
+        }
+
+        .video-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px var(--shadow-intense);
+        }
+
+        .video-item iframe,
+        .video-item video {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: var(--radius-lg);
+            transition: transform var(--transition-smooth);
+        }
+
+        .video-item:hover iframe,
+        .video-item:hover video {
+            transform: scale(1.05);
+        }
+
+        /* Reels spécifiques */
+        .video-item.reel {
+            aspect-ratio: 9/16;
+            max-height: 500px;
+            min-height: 300px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .video-item.reel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        /* Overlays améliorés */
+        .photo-overlay,
+        .video-overlay {
             position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(255, 107, 53, 0.9);
-            color: white;
-            padding: 0.3rem 0.6rem;
-            border-radius: 15px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            backdrop-filter: blur(10px);
-            z-index: 3;
-            transform: scale(0);
-            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .gallery-item:hover .photo-badge {
-            transform: scale(1);
-        }
-
-        .gallery-info {
-            padding: 1rem 0.8rem;
-            background: var(--bg-card);
-            border-radius: 0 0 15px 15px;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 107, 53, 0.95),
+                rgba(255, 138, 91, 0.95)
+            );
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            min-height: fit-content;
-        }
-
-        .gallery-info h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-            letter-spacing: 0.3px;
-        }
-
-        .gallery-button {
-            display: inline-flex;
-            align-items: center;
             justify-content: center;
-            gap: 0.3rem;
-            background: transparent;
-            color: var(--accent);
-            border: 1.5px solid var(--accent);
-            padding: 0.6rem 1rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 0.3px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            min-height: 35px;
-            cursor: pointer;
+            opacity: 0;
+            transition: all var(--transition-smooth);
+            padding: var(--space-lg);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
         }
 
-        .gallery-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--accent);
-            transition: left 0.3s ease;
-            z-index: -1;
+        .photo-item:hover .photo-overlay,
+        .video-item:hover .video-overlay {
+            opacity: 1;
         }
-
-        .gallery-button:hover {
+        .photo-overlay {
+            display: none; /* Cache complètement l'overlay avec la description */
+        }
+        .photo-overlay h3,
+        .video-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-xs);
             color: white;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            font-weight: 700;
+            transform: translateY(20px);
+            transition: transform var(--transition-smooth);
         }
 
-        .gallery-button:hover::before {
-            left: 0;
+        .photo-overlay p,
+        .video-overlay p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            transform: translateY(20px);
+            transition: transform var(--transition-smooth) 0.1s;
         }
 
-        .gallery-button svg {
-            width: 14px;
-            height: 14px;
-            transition: transform 0.3s ease;
+        .photo-item:hover .photo-overlay h3,
+        .photo-item:hover .photo-overlay p,
+        .video-item:hover .video-overlay h3,
+        .video-item:hover .video-overlay p {
+            transform: translateY(0);
         }
 
-        .gallery-button:hover svg {
-            transform: translateX(2px);
+        /* Vue détaillée des reels */
+        .reels-detail-view {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-primary);
+            z-index: var(--z-modal);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-smooth);
+            overflow: hidden;
         }
 
-        .gallery::before {
-            content: '';
+        .reels-detail-view.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .reels-detail-header {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background-image: radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: floatPattern 30s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes floatPattern {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-40px); }
-        }
-
-        .gallery-item a {
-            text-decoration: none;
-            color: inherit;
+            height: 80px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
             display: flex;
-            flex-direction: column;
-            height: 100%;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-lg);
+            z-index: 10;
         }
 
-        .gallery-item a:hover {
-            text-decoration: none;
+        .reels-detail-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 0;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 8rem 2rem;
-            text-align: center;
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact h2 {
-            font-size: 2.2rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-        }
-
-        .contact p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 4rem;
-            line-height: 1.8;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .social-link, .contact-link {
+        .reels-detail-close {
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 0;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
+            box-shadow: 0 8px 25px var(--accent-glow);
         }
 
-        .social-link:hover, .contact-link:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
-            background: var(--accent);
-            color: white;
+        .reels-detail-close:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 15px 35px var(--accent-glow);
         }
 
-        .social-link.facebook:hover {
-            background: #1877f2;
-            border-color: #1877f2;
+        .reels-detail-content {
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            overflow: hidden;
         }
 
-        .social-link.instagram:hover {
-            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-            border-color: #e6683c;
-        }
-
-        .social-link.linkedin:hover {
-            background: #0077b5;
-            border-color: #0077b5;
-        }
-
-        .contact-link.email:hover {
-            background: #34495e;
-            border-color: #34495e;
-        }
-
-        .contact-link.phone:hover {
-            background: #27ae60;
-            border-color: #27ae60;
-        }
-
-        /* Footer */
-        footer {
+        .reels-video-container {
+            flex: 1;
             background: var(--bg-secondary);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-lg);
+            animation: slideInFromLeft 0.6s ease-out;
         }
 
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+        .reels-video-container video {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 40px var(--shadow-intense);
+            object-fit: contain;
+        }
+
+        .reels-description-container {
+            flex: 1;
+            background: var(--bg-primary);
+            padding: var(--space-xl);
+            overflow-y: auto;
+            animation: slideInFromRight 0.6s ease-out;
+            border-left: 1px solid var(--border);
+        }
+
+        .reels-description-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(45deg, var(--accent), var(--accent-hover));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .reels-description-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .reels-description-content h3 {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin: var(--space-lg) 0 var(--space-sm) 0;
+            font-weight: 600;
+        }
+
+        .reels-description-content p {
+            margin-bottom: var(--space-md);
+        }
+
+        .reels-description-content ul {
+            margin-left: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        .reels-description-content li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .reels-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-top: var(--space-lg);
+        }
+
+        .reels-tech-tag {
             background: var(--accent);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-            z-index: 10000;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-lg);
+            font-size: 0.9rem;
             font-weight: 500;
         }
 
-        .toast.show {
-            transform: translateX(0);
-        }
-
-        .toast.success {
-            background: #28a745;
-        }
-
-        .toast.error {
-            background: #dc3545;
-        }
-
-        /* RESPONSIVE DESIGN OPTIMISÉ POUR TOUS LES ÉCRANS MOBILES */
-        
-        /* Desktop - 3 colonnes larges */
-        @media (min-width: 1025px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 3rem;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0;
-            }
-            
-            .gallery-item {
-                aspect-ratio: 0.7;
-                border-radius: 20px;
-            }
-            
-            .gallery-image-container {
-                border-radius: 20px 20px 0 0;
-            }
-            
-            .gallery-info {
-                padding: 2rem;
-                border-radius: 0 0 20px 20px;
-            }
-            
-            .gallery-info h3 {
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-            }
-            
-            .gallery-button {
-                font-size: 1rem;
-                padding: 1rem 2rem;
-                min-height: 50px;
-            }
-        }
-
-        /* Tablettes - 3 colonnes compactes */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-                max-width: 900px;
-                margin: 0 auto;
-                padding: 0 1rem;
-            }
-            
-            .gallery-item {
-                aspect-ratio: 0.75;
-            }
-            
-            .gallery-info h3 {
-                font-size: 1.2rem;
-            }
-            
-            .gallery-button {
-                font-size: 0.9rem;
-                padding: 0.8rem 1.2rem;
-                min-height: 40px;
-            }
-        }
-
-        /* Smartphones et petites tablettes - 3 EN LIGNE OPTIMISÉ */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-
-            .about-text h2 {
-                font-size: 2.5rem;
-                letter-spacing: 1px;
-            }
-
-            .about-text p {
-                font-size: 1rem;
-            }
-
-            .about-image {
-                width: 300px;
-                height: 300px;
-                order: -1;
-            }
-
-            .gallery {
-                padding: 6rem 1rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-                margin-bottom: 2rem;
-            }
-
-            .gallery-subtitle {
-                font-size: 1rem;
-                margin-bottom: 3rem;
-                padding: 0 1rem;
-            }
-
-            /* GRILLE MOBILE - 3 COLONNES PARFAITEMENT ALIGNÉES */
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
-                max-width: 100%;
-                margin: 0 auto;
-                padding: 0 0.5rem;
-            }
-
-            .gallery-item {
-                aspect-ratio: 0.85;
-                border-radius: 12px;
-                box-shadow: 
-                    0 8px 25px rgba(0, 0, 0, 0.15),
-                    0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .gallery-image-container {
-                border-radius: 12px 12px 0 0;
-            }
-
-            .gallery-info {
-                padding: 0.8rem 0.5rem;
-                border-radius: 0 0 12px 12px;
-            }
-
-            .gallery-info h3 {
-                font-size: 0.9rem;
-                margin-bottom: 0.6rem;
-                font-weight: 600;
-            }
-
-            .gallery-button {
-                padding: 0.5rem 0.7rem;
-                font-size: 0.75rem;
-                border-radius: 15px;
-                min-height: 32px;
-                font-weight: 600;
-                border-width: 1.5px;
-            }
-
-            .gallery-button svg {
-                width: 12px;
-                height: 12px;
-            }
-
-            .photo-badge {
-                top: 6px;
-                right: 6px;
-                padding: 0.25rem 0.5rem;
-                font-size: 0.6rem;
-                border-radius: 10px;
-            }
-
-            .about {
-                padding: 8rem 2rem 6rem;
-            }
-
-            .social-links {
-                gap: 1.5rem;
-            }
-
-            .toast {
-                right: 15px;
-                left: 15px;
-                transform: translateY(100px);
-            }
-
-            .toast.show {
-                transform: translateY(0);
-            }
-        }
-
-        /* Petits smartphones (320px - 480px) */
-        @media (max-width: 480px) {
-            nav {
-                padding: 0 1rem;
-            }
-
-            .logo {
-                font-size: 1.8rem;
-            }
-
-            .about-text h2 {
-                font-size: 2.2rem;
-            }
-
-            .about-image {
-                width: 250px;
-                height: 250px;
-            }
-
-            .gallery {
-                padding: 5rem 0.5rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .gallery-subtitle {
-                font-size: 0.95rem;
-                margin-bottom: 2.5rem;
-                padding: 0 0.5rem;
-            }
-
-            /* GRILLE MOBILE PARFAITE - 3 COLONNES SERRÉES */
-            .gallery-grid {
-                gap: 0.8rem;
-                padding: 0 0.3rem;
-            }
-
-            .gallery-item {
-                aspect-ratio: 0.9;
-                border-radius: 10px;
-            }
-
-            .gallery-image-container {
-                border-radius: 10px 10px 0 0;
-            }
-
-            .gallery-info {
-                padding: 0.7rem 0.4rem;
-                border-radius: 0 0 10px 10px;
-            }
-
-            .gallery-info h3 {
-                font-size: 0.8rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .gallery-button {
-                padding: 0.4rem 0.6rem;
-                font-size: 0.7rem;
-                border-radius: 12px;
-                min-height: 28px;
-            }
-
-            .gallery-button svg {
-                width: 10px;
-                height: 10px;
-            }
-
-            .photo-badge {
-                top: 4px;
-                right: 4px;
-                padding: 0.2rem 0.4rem;
-                font-size: 0.55rem;
-                border-radius: 8px;
-            }
-
-            .skills {
-                justify-content: center;
-            }
-
-            .social-links {
-                gap: 1rem;
-            }
-
-            .contact {
-                padding: 6rem 1rem;
-            }
-        }
-
-        /* Très petits écrans (moins de 360px) */
-        @media (max-width: 360px) {
-            .gallery-grid {
-                gap: 0.6rem;
-                padding: 0 0.2rem;
-            }
-
-            .gallery-item {
-                aspect-ratio: 0.95;
-                border-radius: 8px;
-            }
-
-            .gallery-image-container {
-                border-radius: 8px 8px 0 0;
-            }
-
-            .gallery-info {
-                padding: 0.6rem 0.3rem;
-                border-radius: 0 0 8px 8px;
-            }
-
-            .gallery-info h3 {
-                font-size: 0.75rem;
-                margin-bottom: 0.4rem;
-            }
-
-            .gallery-button {
-                padding: 0.35rem 0.5rem;
-                font-size: 0.65rem;
-                border-radius: 10px;
-                min-height: 26px;
-            }
-
-            .photo-badge {
-                top: 3px;
-                right: 3px;
-                padding: 0.15rem 0.3rem;
-                font-size: 0.5rem;
-                border-radius: 6px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .logo {
-                font-size: 1.6rem;
-            }
-        }
-
-        /* Optimisations pour les appareils tactiles */
-        @media (hover: none) and (pointer: coarse) {
-            .gallery-item:hover {
-                transform: none;
-            }
-            
-            .gallery-item:active {
-                transform: scale(0.98);
-                transition: transform 0.1s ease;
-            }
-            
-            .gallery-button:active {
-                transform: scale(0.95);
-                transition: transform 0.1s ease;
-            }
-        }
-
-        /* Loading Animation */
-        .loading-overlay {
+        /* Vue détaillée des vidéos YouTube */
+        .youtube-detail-view {
             position: fixed;
+            inset: 0;
+            background: var(--bg-primary);
+            z-index: var(--z-modal);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-smooth);
+            overflow: hidden;
+        }
+
+        .youtube-detail-view.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .youtube-detail-header {
+            position: absolute;
             top: 0;
             left: 0;
+            right: 0;
+            height: 80px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--space-lg);
+            z-index: 10;
+        }
+
+        .youtube-detail-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 0;
+        }
+
+        .youtube-detail-close {
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        .youtube-detail-close:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 15px 35px var(--accent-glow);
+        }
+
+        .youtube-detail-content {
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .youtube-video-container {
+            flex: 1;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-lg);
+            animation: slideInFromLeft 0.6s ease-out;
+        }
+
+        #youtubeDetailContainer {
             width: 100%;
             height: 100%;
+            max-width: 800px;
+            max-height: 450px;
+            aspect-ratio: 16/9;
+        }
+
+        #youtubeDetailContainer iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 40px var(--shadow-intense);
+        }
+
+        .youtube-description-container {
+            flex: 1;
+            background: var(--bg-primary);
+            padding: var(--space-xl);
+            overflow-y: auto;
+            animation: slideInFromRight 0.6s ease-out;
+            border-left: 1px solid var(--border);
+        }
+
+        .youtube-description-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(45deg, var(--accent), var(--accent-hover));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .youtube-description-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .youtube-description-content h3 {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin: var(--space-lg) 0 var(--space-sm) 0;
+            font-weight: 600;
+        }
+
+        .youtube-description-content p {
+            margin-bottom: var(--space-md);
+        }
+
+        .youtube-description-content ul {
+            margin-left: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        .youtube-description-content li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .youtube-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-top: var(--space-lg);
+        }
+
+        .youtube-tech-tag {
+            background: var(--accent);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-lg);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Navigation entre sections améliorée */
+        .section-nav {
+            position: fixed;
+            right: var(--space-lg);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            z-index: var(--z-sticky);
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            padding: var(--space-sm);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+        }
+
+        .section-nav a {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+            transition: all var(--transition-fast);
+            opacity: 0.6;
+            position: relative;
+            display: block;
+        }
+
+        .section-nav a:hover,
+        .section-nav a.active {
+            background: var(--accent);
+            opacity: 1;
+            transform: scale(1.5);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .section-nav a::after {
+            content: attr(data-title);
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all var(--transition-fast);
+            box-shadow: 0 5px 15px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .section-nav a:hover::after {
+            opacity: 1;
+            transform: translateY(-50%) translateX(-5px);
+        }
+
+        /* Lightbox amélioré */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-modal);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-smooth);
+            padding: 40px;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.😎,
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: scale(0.9);
+            transition: transform var(--transition-slow);
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+            box-shadow: 0 10px 25px var(--accent-glow);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 15px 35px var(--accent-glow);
+        }
+
+        /* Modal vidéo amélioré avec taille fixe */
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-modal);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-smooth);
+            padding: 60px 40px 40px;
+        }
+
+        .video-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            max-width: 1200px;
+            max-height: 675px;
+            animation: fadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+            box-shadow: 0 10px 25px var(--accent-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .video-modal-close:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 15px 35px var(--accent-glow);
+        }
+
+        #videoModalContainer {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #videoModalContainer iframe,
+        #videoModalContainer video {
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius-md);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Particules */
+        .particle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(45deg, var(--accent), var(--accent-hover));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: var(--z-tooltip);
+            animation: particleFloat 1.5s ease-out forwards;
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
             background: var(--bg-primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.5s ease;
+            z-index: var(--z-modal);
+            transition: all var(--transition-smooth);
         }
 
         .loading-overlay.hidden {
             opacity: 0;
-            pointer-events: none;
+            visibility: hidden;
         }
 
         .loader {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--border);
-            border-top: 1px solid var(--accent);
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
             border-radius: 50%;
-            animation: spin 1.5s linear infinite;
+            animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
@@ -983,38 +1478,330 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Optimisations performances */
-        .gallery-item {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: transform;
+        /* Classes utilitaires pour l'accessibilité */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
-        
-        .social-link, .contact-link {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        /* Responsive design AMÉLIORÉ pour mobile */
+        @media (max-width: 768px) {
+            :root {
+                --space-lg: 1rem;
+                --space-xl: 2rem;
+                --space-2xl: 3rem;
+            }
+
+            nav {
+                padding: 0 var(--space-md);
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .theme-toggle {
+                padding: var(--space-xs) var(--space-sm);
+                font-size: 0.8rem;
+            }
+
+            .back-button {
+                left: var(--space-sm);
+                padding: var(--space-xs) var(--space-sm);
+                font-size: 0.9rem;
+                top: calc(70px + var(--space-sm));
+            }
+
+            .section-nav {
+                right: var(--space-sm);
+                padding: var(--space-xs);
+            }
+
+            .gallery-section {
+                padding: var(--space-xl) var(--space-sm);
+                min-height: auto;
+            }
+
+            .section-title {
+                font-size: clamp(2rem, 8vw, 3rem);
+                margin-bottom: var(--space-md);
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: var(--space-lg);
+                padding: 0 var(--space-sm);
+            }
+
+            .photos-grid,
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+                margin-top: var(--space-md);
+            }
+
+            .photo-item img {
+                height: 250px;
+            }
+
+            .video-item {
+                aspect-ratio: 16/9;
+            }
+
+            .video-item.reel {
+                aspect-ratio: 9/16;
+                max-height: 400px;
+            }
+
+            .lightbox {
+                padding: 20px;
+            }
+
+            .lightbox-close {
+                top: var(--space-sm);
+                right: var(--space-sm);
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .video-modal {
+                padding: 80px 20px 20px;
+            }
+
+            .video-modal-content {
+                max-width: 100%;
+                max-height: calc(100vh - 100px);
+            }
+
+            .video-modal-close {
+                top: -60px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .photo-overlay,
+            .video-overlay {
+                padding: var(--space-md);
+            }
+
+            .photo-overlay h3,
+            .video-overlay h3 {
+                font-size: 1.2rem;
+            }
+
+            .photo-overlay p,
+            .video-overlay p {
+                font-size: 0.9rem;
+            }
+
+            /* Responsive pour la vue détaillée des reels */
+            .reels-detail-content {
+                flex-direction: column;
+            }
+
+            .reels-video-container {
+                flex: 0 0 50%;
+                padding: var(--space-md);
+            }
+
+            .reels-description-container {
+                flex: 1;
+                padding: var(--space-md);
+                border-left: none;
+                border-top: 1px solid var(--border);
+            }
+
+            .reels-description-title {
+                font-size: 1.5rem;
+                margin-bottom: var(--space-md);
+            }
+
+            .reels-description-content {
+                font-size: 1rem;
+            }
+
+            .reels-detail-header {
+                padding: 0 var(--space-md);
+            }
+
+            .reels-detail-title {
+                font-size: 1.2rem;
+            }
+
+            .reels-detail-close {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            /* Responsive pour la vue détaillée YouTube */
+            .youtube-detail-content {
+                flex-direction: column;
+            }
+
+            .youtube-video-container {
+                flex: 0 0 50%;
+                padding: var(--space-md);
+            }
+
+            .youtube-description-container {
+                flex: 1;
+                padding: var(--space-md);
+                border-left: none;
+                border-top: 1px solid var(--border);
+            }
+
+            .youtube-description-title {
+                font-size: 1.5rem;
+                margin-bottom: var(--space-md);
+            }
+
+            .youtube-description-content {
+                font-size: 1rem;
+            }
+
+            .youtube-detail-header {
+                padding: 0 var(--space-md);
+            }
+
+            .youtube-detail-title {
+                font-size: 1.2rem;
+            }
+
+            .youtube-detail-close {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
         }
-        
-        .gallery-image-container::before {
-            will-change: transform;
-            backface-visibility: hidden;
+
+        @media (max-width: 480px) {
+            .gallery-section {
+                padding: var(--space-lg) var(--space-xs);
+            }
+
+            .photos-grid,
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-sm);
+            }
+
+            .photo-item img {
+                height: 220px;
+            }
+
+            .video-item.reel {
+                max-height: 350px;
+            }
+
+            .section-nav {
+                display: none;
+            }
+
+            nav {
+                padding: 0 var(--space-sm);
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .theme-toggle {
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
+
+            .back-button {
+                left: 10px;
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+
+            .video-modal {
+                padding: 60px 10px 10px;
+            }
+
+            .reels-video-container {
+                flex: 0 0 40%;
+                padding: var(--space-sm);
+            }
+
+            .reels-description-container {
+                padding: var(--space-sm);
+            }
+
+            .reels-description-title {
+                font-size: 1.3rem;
+            }
+
+            .reels-description-content {
+                font-size: 0.9rem;
+            }
+            .youtube-video-container {
+                flex: 0 0 40%;
+                padding: var(--space-sm);
+            }
+
+            .youtube-description-container {
+                padding: var(--space-sm);
+            }
+
+            .youtube-description-title {
+                font-size: 1.3rem;
+            }
+
+            .youtube-description-content {
+                font-size: 0.9rem;
+            }
         }
-        
-        /* Améliorations accessibilité */
+
+        /* Amélioration des performances */
+        .photo-item,
+        .video-item {
+            contain: layout style paint;
+        }
+
+        /* Préférences utilisateur */
         @media (prefers-reduced-motion: reduce) {
-            .about::before, .gallery::before {
-                animation: none;
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
-            
-            .gallery-item {
-                transform: none !important;
+
+            html {
+                scroll-behavior: auto;
             }
         }
-        
-        /* Focus visible pour l'accessibilité */
-        .gallery-button:focus,
-        .social-link:focus,
-        .contact-link:focus,
-        .nav-links a:focus,
-        .logo:focus {
+
+        @media (prefers-contrast: high) {
+            :root {
+                --border: #666666;
+                --shadow: rgba(0, 0, 0, 0.8);
+            }
+        }
+
+        /* États de focus améliorés */
+        button:focus-visible,
+        a:focus-visible {
             outline: 2px solid var(--accent);
             outline-offset: 2px;
         }
@@ -1023,559 +1810,1540 @@
 <body>
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
-        <div class="loader"></div>
+        <div class="loader" aria-label="Chargement en cours"></div>
     </div>
 
     <!-- Header -->
-    <header>
-        <nav>
-            <a href="#about" class="logo" id="logoLink">Omar Bougamha</a>
+    <header role="banner">
+        <nav role="navigation" aria-label="Navigation principale">
+            <a href="index.html#about" class="logo" aria-label="Aller à la section À propos">Omar Bougamha</a>
+            
             <ul class="nav-links">
-                <li><a href="#about">À Propos</a></li>
-                <li><a href="#gallery">Galerie</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="#video_youtube" aria-describedby="youtube-section">YouTube</a></li>
+                <li><a href="#reels" aria-describedby="reels-section">Reels</a></li>
+                <li><a href="#photo" aria-describedby="photo-section">Photo</a></li>
             </ul>
-            <button class="theme-toggle" id="themeToggle">Mode Clair</button>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Ouvrir le menu mobile">
+                <span>☰</span>
+            </button>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
+                <span>Mode Clair</span>
+            </button>
         </nav>
+        
+        <!-- Menu mobile -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="#video_youtube">YouTube</a></li>
+                <li><a href="#reels">Reels</a></li>
+                <li><a href="#photo">Photo</a></li>
+            </ul>
+        </div>
     </header>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>Vidéaste & Photographe</h2>
-                <p>Je m'appelle Omar, j'ai 21 ans et je suis en deuxième année de licence en cinéma et arts audiovisuels, spécialité image et lumière.</p>
-                <p>Passionné par l'image depuis l'enfance, ce qui n'était qu'un loisir est devenu une vraie vocation. Avec le temps, j'ai appris à jouer avec la lumière, le cadre et l'émotion pour raconter des histoires fortes.</p>
-                <p>Je suis spécialisé dans la vidéo, les mariages et les événements, avec une approche simple, esthétique et authentique.</p>
-                <div class="skills">
-                    <span class="skill-tag">Vidéographie</span>
-                    <span class="skill-tag">Éclairage</span>
-                    <span class="skill-tag">Photographie</span>
-                    <span class="skill-tag">Post-production</span>
+    <!-- Back Button -->
+    <a href="index.html" class="back-button" aria-label="Retour à la page d'accueil">
+        <span aria-hidden="true">←</span> 
+        <span>Retour à l'accueil</span>
+    </a>
+
+    <!-- Section Navigation -->
+    <nav class="section-nav" role="navigation" aria-label="Navigation par sections">
+        <a href="#video_youtube" data-title="Vidéo YouTube" aria-label="Aller à la section Vidéo YouTube"></a>
+        <a href="#reels" data-title="Reels" aria-label="Aller à la section Reels"></a>
+        <a href="#photo" data-title="Photo" aria-label="Aller à la section Photo"></a>
+    </nav>
+
+    <!-- Main Content -->
+    <main role="main">
+        <!-- Section Video Youtube -->
+        <section class="gallery-section" id="video_youtube" aria-labelledby="youtube-title">
+            <h2 id="youtube-title" class="section-title">YouTube</h2>
+            <div class="videos-grid" role="grid" aria-label="Galerie de vidéos YouTube">
+                <div class="video-item" role="gridcell" data-youtube-id="youtube-7">
+                    <img src="Youtube7.jpg" 
+                        alt="Clip Musical - Production complète" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+                <div class="video-item" role="gridcell" data-youtube-id="youtube-8">
+                    <img src="Youtube8.jpg" 
+                        alt="Clip Musical - Production complète" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+
+                <div class="video-item" role="gridcell" data-youtube-id="youtube-9">
+                    <img src="Youtube9.jpg" 
+                        alt="Clip Musical - Production complète" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+                <div class="video-item" role="gridcell" data-youtube-id="youtube-10">
+                    <img src="Youtube10.jpg" 
+                        alt="Clip Musical - Production complète" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+                <div class="video-item" role="gridcell" data-youtube-id="youtube-1">
+                    <img src="Youtube1.jpg" 
+                        alt="Clip Musical - Production complète" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+                <div class="video-item" role="gridcell" data-youtube-id="youtube-2">
+                    <img src="Youtube2.jpg" 
+                        alt="Clip Musical - Production complète" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+                <div class="video-item" role="gridcell" data-youtube-id="youtube-3">
+                    <img src="Youtube3.jpg" 
+                        alt="Clip Musical - Production complète" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+
+                <div class="video-item" role="gridcell" data-youtube-id="youtube-4">
+                    <img src="Youtube4.jpg" 
+                        alt="Clip Musical - Production complète" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+                <div class="video-item" role="gridcell" data-youtube-id="youtube-5">
+                    <img src="Youtube5.jpg" 
+                        alt="Clip Musical - Production complète" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+                <div class="video-item" role="gridcell" data-youtube-id="youtube-6">
+                    <img src="Youtube6.jpg" 
+                        alt="Clip Musical - Production complète" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
                 </div>
             </div>
-            <div class="about-image">
-                <img src="Omar.jpeg" alt="Omar Bougamha - Photographe & Vidéaste">
+        </section>
+
+        <!-- Section Reels -->
+        <section class="gallery-section" id="reels" aria-labelledby="reels-title">
+            <h2 id="reels-title" class="section-title">Reels</h2>
+            <div class="videos-grid" role="grid" aria-label="Galerie de reels">
+                <div class="video-item reel" role="gridcell" data-reel-id="reel-8" 
+                    data-video-src="Reel8.mp4">
+                    <img src="Reel8.jpg" 
+                        alt="Reel Fashion - Défilé de mode" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+                <div class="video-item reel" role="gridcell" data-reel-id="reel-1" 
+                    data-video-src="Reel1.mp4">
+                    <img src="Reel1.jpg" 
+                        alt="Reel Fashion - Défilé de mode" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+                <div class="video-item reel" role="gridcell" data-reel-id="reel-2" 
+                    data-video-src="Reel2.mp4">
+                    <img src="Reel2.jpg" 
+                        alt="Reel Fashion - Défilé de mode" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+                <div class="video-item reel" role="gridcell" data-reel-id="reel-3" 
+                    data-video-src="Reel3.mp4">
+                    <img src="Reel3.jpg" 
+                        alt="Reel Fashion - Défilé de mode" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+                <div class="video-item reel" role="gridcell" data-reel-id="reel-4" 
+                    data-video-src="Reel4.mp4">
+                    <img src="Reel5.png" 
+                        alt="Reel Fashion - Défilé de mode" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+
+                <div class="video-item reel" role="gridcell" data-reel-id="reel-5" 
+                    data-video-src="Reel5.mp4">
+                    <img src="Reel4.jpg" 
+                        alt="Reel Fashion - Défilé de mode" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+                <div class="video-item reel" role="gridcell" data-reel-id="reel-6" 
+                    data-video-src="Reel6.mp4">
+                    <img src="Reel6.jpg" 
+                        alt="Reel Fashion - Défilé de mode" 
+                        loading="lazy">
+                    <div class="video-overlay" aria-hidden="true">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Photo -->
+        <section class="gallery-section" id="photo" aria-labelledby="photo-title">
+            <h2 id="photo-title" class="section-title">Photo</h2>
+            <div class="photos-grid" role="grid" aria-label="Galerie de photos">
+                <div class="photo-item loading" role="gridcell">
+                    <img src="1.jpeg" 
+                         alt="Portrait professionnel élégant avec éclairage sophistiqué" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="2.jpeg" 
+                         alt="Portrait artistique avec jeu d'ombres et de lumières" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="3.jpeg" 
+                         alt="Portrait élégant d'une femme" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="4.jpeg" 
+                         alt="Portrait masculin exprimant force et caractère" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="5.jpeg" 
+                         alt="Portrait créatif et original" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="6.jpeg" 
+                         alt="Portrait lifestyle naturel et authentique" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="7.jpeg" 
+                         alt="Portrait professionnel élégant avec éclairage sophistiqué" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="8.jpeg" 
+                         alt="Portrait artistique avec jeu d'ombres et de lumières" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="9.jpeg" 
+                         alt="Portrait élégant d'une femme" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="10.jpeg" 
+                         alt="Portrait masculin exprimant force et caractère" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="11.jpeg" 
+                         alt="Portrait créatif et original" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="12.jpeg" 
+                         alt="Portrait lifestyle naturel et authentique" 
+                         loading="lazy">
+                </div>
+                <div class="photo-item loading" role="gridcell">
+                    <img src="14.jpeg" 
+                         alt="Portrait lifestyle naturel et authentique" 
+                         loading="lazy">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Vue détaillée des reels -->
+    <div class="reels-detail-view" id="reelsDetailView" role="dialog" aria-modal="true" aria-labelledby="reels-detail-title" aria-hidden="true">
+        <div class="reels-detail-header">
+            <h2 class="reels-detail-title" id="reels-detail-title">Détails du Reel</h2>
+            <button class="reels-detail-close" id="reelsDetailClose" aria-label="Fermer la vue détaillée">&times;</button>
+        </div>
+        <div class="reels-detail-content">
+            <div class="reels-video-container">
+                <video id="reelsDetailVideo" controls>
+                    <source src="" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo HTML5.
+                </video>
+            </div>
+            <div class="reels-description-container">
+                <h3 class="reels-description-title" id="reelsDescriptionTitle">Titre du Reel</h3>
+                <div class="reels-description-content" id="reelsDescriptionContent">
+                    <!-- Le contenu sera généré dynamiquement -->
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- Gallery Section - 3 créations en ligne sur mobile -->
-    <section class="gallery" id="gallery">
-        <h2 class="section-title">Mes créations</h2>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <a href="Gallery.html#video_youtube">
-                    <div class="gallery-image-container">
-                        <img src="https://i.pinimg.com/736x/a4/67/0d/a4670dbfe01e25e27545ec6f49a6de2c.jpg" alt="Studio Photo Créatif">
-                        <div class="photo-badge">Youtube</div>
-                    </div>
-                    <div class="gallery-info">
-                        <h3>Youtube</h3>
-                        <div class="gallery-button">
-                            Découvrir
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
+    </div>
+    <!-- Vue détaillée des vidéos YouTube -->
+    <div class="youtube-detail-view" id="youtubeDetailView" role="dialog" aria-modal="true" aria-labelledby="youtube-detail-title" aria-hidden="true">
+        <div class="youtube-detail-header">
+            <h2 class="youtube-detail-title" id="youtube-detail-title">Détails de la vidéo</h2>
+            <button class="youtube-detail-close" id="youtubeDetailClose" aria-label="Fermer la vue détaillée">&times;</button>
+        </div>
+        <div class="youtube-detail-content">
+            <div class="youtube-video-container">
+                <div id="youtubeDetailContainer"></div>
             </div>
-
-            <div class="gallery-item">
-                <a href="Gallery.html#reels">
-                    <div class="gallery-image-container">
-                        <img src="https://i.pinimg.com/1200x/e3/7e/d3/e37ed3b82d175a44b0079eaa1d8f94bd.jpg" alt="Équipement Photo Professionnel">
-                        <div class="photo-badge">Reels</div>
-                    </div>
-                    <div class="gallery-info">
-                        <h3>Reels</h3>
-                        <div class="gallery-button">
-                            Découvrir
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="gallery-item">
-                <a href="Gallery.html#photo">
-                    <div class="gallery-image-container">
-                        <img src="https://i.pinimg.com/736x/38/4c/81/384c819f07364daa882339e1074dc374.jpg" alt="Chambre Noire Développement">
-                        <div class="photo-badge">Photo</div>
-                    </div>
-                    <div class="gallery-info">
-                        <h3>Photo</h3>
-                        <div class="gallery-button">
-                            Découvrir
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
+            <div class="youtube-description-container">
+                <h3 class="youtube-description-title" id="youtubeDescriptionTitle">Titre de la vidéo</h3>
+                <div class="youtube-description-content" id="youtubeDescriptionContent">
+                    <!-- Le contenu sera généré dynamiquement -->
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="contact-content">
-            <h2>Restons en Contact</h2>
-            <div class="social-links">
-                <!-- Liens sociaux -->
-                <a href="https://www.facebook.com/omar.bougamha.2025" class="social-link facebook" title="Facebook">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/_omarbg_/" class="social-link instagram" title="Instagram">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/omar-bougamha-7a3a63234/" class="social-link linkedin" title="LinkedIn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
-                
-                <!-- Liens de contact avec copie automatique -->
-                <button class="contact-link email" id="emailButton" title="Copier l'email">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <polyline points="22,6 12,13 2,6"/>
-                    </svg>
-                </button>
-                
-                <button class="contact-link phone" id="phoneButton" title="Copier le téléphone">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
-                </button>
-            </div>
+    </div>
+    <!-- Lightbox pour photos -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Fermer la lightbox">&times;</button>
+            <img id="lightboxImage" src="" alt="" aria-describedby="lightbox-description">
         </div>
-    </section>
+        <div id="lightbox-title" class="sr-only">Image agrandie</div>
+        <div id="lightbox-description" class="sr-only"></div>
+    </div>
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast"></div>
+    <!-- Modal pour vidéos -->
+    <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" aria-hidden="true">
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="videoModalClose" aria-label="Fermer la vidéo">&times;</button>
+            <div id="videoModalContainer"></div>
+        </div>
+        <div id="video-modal-title" class="sr-only">Vidéo en plein écran</div>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Portfolio Vidéaste & Photographe. Tous droits réservés.</p>
-        <p>Site Créé Par Mouna Meftah</p>
-    </footer>
-    
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // ========== VARIABLES GLOBALES ==========
-            const themeToggle = document.getElementById('themeToggle');
-            const loadingOverlay = document.getElementById('loadingOverlay');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            const logoLink = document.getElementById('logoLink');
-            const emailButton = document.getElementById('emailButton');
-            const phoneButton = document.getElementById('phoneButton');
-            const toast = document.getElementById('toast');
-            
-            // ========== FONCTIONS UTILITAIRES ==========
-            function showToast(message, type = 'success') {
-                toast.textContent = message;
-                toast.className = `toast ${type}`;
-                toast.classList.add('show');
+        // Configuration et constantes
+        const CONFIG = {
+            ANIMATION_DELAY: 100,
+            LOADING_DELAY: 800,
+            DEBOUNCE_DELAY: 250,
+            INTERSECTION_THRESHOLD: 0.1,
+            PARTICLES_COUNT: 8,
+            LAZY_LOADING_MARGIN: '100px'
+        };
+        // Données des vidéos YouTube avec descriptions détaillées
+        const YOUTUBE_DATA = {
+            'youtube-1': {
+                title: 'Projet réalisé par Freesh',
+                youtubeId: '-Ok3x5VtmPo',
+                description: `
+                    <h3>J’ai assuré le cadrage et la lumière sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : Sony A7III</li>
+                        <li>Optiques : Sigma 24-70mm </li>
+                        <li>Éclairage : Godox </li>
+                        <li>Audio : DJI Mic 2</li>
+                    </ul>
+                `,
                 
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
+            },
+            'youtube-2': {
+                title: 'Projet réalisé par Freesh',
+                youtubeId: '24ufRpi1gnM',
+                description: `
+                    <h3>J’ai assuré le cadrage, la lumière et la post-production sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : 3 caméras Sony A7III</li>
+                        <li>Optiques : 3 optiques Sigma 24-70mm </li>
+                        <li>Éclairage : Godox </li>
+                    </ul>
+                `,
+            },
+            'youtube-3': {
+                title: 'Projet réalisé par Freesh',
+                youtubeId: '7NuuposBWxQ',
+                description: `
+                    <h3>J’ai assuré le cadrage, la lumière et la post-production sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : 3 caméras Sony A7III</li>
+                        <li>Optiques : 3 optiques Sigma 24-70mm </li>
+                        <li>Éclairage : Godox </li>
+                    </ul>
+                `,
+            },
+            'youtube-4': {
+                title: 'Projet réalisé par Freesh',
+                youtubeId: 'H2bJOsHEuAM',
+                description: `
+                    <h3>J’ai assuré la post-production sur ce projet</h3>
+                    
+                    <h3>Technologies Utilisées : </h3>
+                    <ul>
+                        <li>Montage & Étalonnage : Adobe Premiere Pro</li>
+                    </ul>
+                `,
+            },
+            'youtube-5': {
+                title: 'Projet réalisé par Freesh',
+                youtubeId: '5wVE03yeOuU',
+                description: `
+                    <h3>J’ai assuré le cadrage et la lumière sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : 3 caméras Sony A7III</li>
+                        <li>Optiques : 3 optiques Sigma 24-70mm </li>
+                        <li>Éclairage : Godox </li>
+                    </ul>
+                `,
+            },
+            'youtube-6': {
+                title: 'Projet réalisé par Freesh',
+                youtubeId: 'naxcXQjeeKE',
+                description: `
+                    <h3>J’ai assuré le cadrage et la lumière sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : 3 caméras Sony A7III</li>
+                        <li>Optiques : 3 optiques Sigma 24-70mm </li>
+                        <li>Éclairage : Godox </li>
+                    </ul>
+                `,
+            },
+            'youtube-7': {
+                title: 'Projet réalisé par Freesh',
+                youtubeId: 'kZO9d5Ou5p8',
+                description: `
+                    <h3>J’ai assuré le cadrage et la lumière sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : Sony A7III</li>
+                        <li>Optiques : Sigma 24-70mm </li>
+                        <li>Éclairage : Godox </li>
+                    </ul>
+                `,
+            },
+            'youtube-8': {
+                title: 'Projet réalisé par Freesh',
+                youtubeId: 'oYYh7VXvCcg',
+                description: `
+                    <h3>J’ai assuré le cadrage, la lumière et la post-production sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : 3 caméras Sony A7III</li>
+                        <li>Optiques : 3 optiques Sigma 24-70mm </li>
+                        <li>Éclairage : Godox </li>
+                    </ul>
+                `,
+            },
+            'youtube-9': {
+                title: 'Projet réalisé par Freesh',
+                youtubeId: 'aTsfwMZQx3A',
+                description: `
+                    <h3>J’ai assuré le cadrage et la lumière sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : Sony A7III</li>
+                        <li>Optiques : Sigma 24-70mm </li>
+                        <li>Éclairage : Godox </li>
+                    </ul>
+                `,
+            },
+            'youtube-10': {
+                title: 'Projet réalisé par Freesh',
+                youtubeId: 'XaVtbrxw0wU',
+                description: `
+                    <h3>J’ai assuré le cadrage et la lumière sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra :Sony A7III</li>
+                        <li>Optiques :Sigma 24-70mm </li>
+                        <li>Éclairage : Godox </li>
+                    </ul>
+                `,
             }
 
-            function copyToClipboard(text) {
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    return navigator.clipboard.writeText(text);
-                } else {
-                    // Fallback pour les navigateurs plus anciens
-                    const textArea = document.createElement('textarea');
-                    textArea.value = text;
-                    textArea.style.position = 'fixed';
-                    textArea.style.left = '-999999px';
-                    textArea.style.top = '-999999px';
-                    document.body.appendChild(textArea);
-                    textArea.focus();
-                    textArea.select();
+        };
+        // Données des reels avec descriptions détaillées
+        const REELS_DATA = {
+            'reel-1': {
+                title: 'Projet réalisé par Freesh ',
+                description: `
+                    <h3>J’ai assuré la post-production sur ce projet</h3>
                     
-                    return new Promise((resolve, reject) => {
-                        if (document.execCommand('copy')) {
-                            resolve();
-                        } else {
-                            reject();
-                        }
-                        document.body.removeChild(textArea);
-                    });
-                }
+                    <h3>Technologies Utilisées : </h3>
+                    <ul>
+                        <li>Montage & Étalonnage : Adobe Premiere Pro</li>
+                    </ul>
+                `,
+            },
+            'reel-2': {
+                title: 'Projet réalisé par Freesh ',
+                description: `
+                    <h3>J’ai assuré la post-production sur ce projet</h3>
+                    
+                    <h3>Technologies Utilisées : </h3>
+                    <ul>
+                        <li>Montage & Étalonnage : Adobe Premiere Pro</li>
+                    </ul>
+                `,
+            },
+            'reel-3': {
+                title: 'Projet réalisé par Freesh',
+                description: `
+                    <h3>J’ai assuré le cadrage, la lumière et la post-production sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : 3 caméras Sony A7III</li>
+                        <li>Optiques : 3 optiques Sigma 24-70mm </li>
+                        <li>Éclairage : Godox </li>
+                    </ul>
+                `,
+            },
+            'reel-4': {
+                title: 'Projet réalisé par Arbi Bougamha',
+                description: `
+                    <h3>J’ai assuré le cadrage et la lumière sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : Iphone 14 Pro Max</li>
+                        <li>Éclairage : parapluie </li>
+                    </ul>
+                `,
+            },
+            'reel-5': {
+                title: 'Projet réalisé par Arbi Bougamha',
+                description: `
+                    <h3>J’ai assuré le cadrage et la lumière sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : Iphone 14 Pro Max</li>
+                        <li>Éclairage : parapluie </li>
+                    </ul>
+                `,
+            },
+            'reel-6': {
+                title: 'Projet réalisé par Thabet Academy',
+                description: `
+                    <h3>J’ai assuré le cadrage, la lumière et la post-production sur ce projet</h3>
+                    <h3>Équipement Professionnel :</h3>
+                    <ul>
+                        <li>Caméra : Iphone 14 Pro Max</li>
+                        <li>Éclairage : Godox </li>
+                        <li>Audio : DJI Mic 2</li>
+                    </ul>
+                `,
+            },
+            'reel-8': {
+                title: 'Projet réalisé par Freesh',
+                description: `
+                    <h3>J’ai assuré la post-production sur ce projet</h3>
+                    <h3>Technologies Utilisées :</h3>
+                    <ul>
+                        <li>Montage & Étalonnage : Adobe Premiere Pro</li>
+                    </ul>
+                `,
+            },
+            
+        };
+
+        // Gestionnaire d'état global
+        class AppState {
+            constructor() {
+                this.isLightboxOpen = false;
+                this.isVideoModalOpen = false;
+                this.isReelsDetailOpen = false;
+                this.isYoutubeDetailOpen = false;
+                this.currentTheme = localStorage.getItem('theme') || 'dark';
+                this.isLoading = true;
+                this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             }
 
-            function smoothScrollTo(targetId) {
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = targetSection.offsetTop - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+            setTheme(theme) {
+                this.currentTheme = theme;
+                localStorage.setItem('theme', theme);
             }
-            
-            // ========== GESTION DU THEME ==========
-            function initTheme() {
-                const savedTheme = localStorage.getItem('theme') || 'dark';
+
+            toggleLightbox(state) {
+                this.isLightboxOpen = state;
+                document.body.style.overflow = state ? 'hidden' : 'auto';
+            }
+
+            toggleVideoModal(state) {
+                this.isVideoModalOpen = state;
+                document.body.style.overflow = state ? 'hidden' : 'auto';
+            }
+
+            toggleReelsDetail(state) {
+                this.isReelsDetailOpen = state;
+                document.body.style.overflow = state ? 'hidden' : 'auto';
+            }
+            toggleYoutubeDetail(state) {
+                this.isYoutubeDetailOpen = state;
+                document.body.style.overflow = state ? 'hidden' : 'auto';
+            }
+        }
+
+        // Utilitaires
+        const Utils = {
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            },
+
+            throttle(func, limit) {
+                let inThrottle;
+                return function() {
+                    const args = arguments;
+                    const context = this;
+                    if (!inThrottle) {
+                        func.apply(context, args);
+                        inThrottle = true;
+                        setTimeout(() => inThrottle = false, limit);
+                    }
+                };
+            },
+
+            createElement(tag, className = '', attributes = {}) {
+                const element = document.createElement(tag);
+                if (className) element.className = className;
+                Object.entries(attributes).forEach(([key, value]) => {
+                    element.setAttribute(key, value);
+                });
+                return element;
+            },
+
+            getRandomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            },
+
+            announceToScreenReader(message) {
+                const announcement = Utils.createElement('div', 'sr-only', {
+                    'aria-live': 'polite',
+                    'aria-atomic': 'true'
+                });
+                announcement.textContent = message;
+                document.body.appendChild(announcement);
+                setTimeout(() => announcement.remove(), 1000);
+            }
+        };
+
+        // Gestionnaire de thème
+        class ThemeManager {
+            constructor(appState) {
+                this.appState = appState;
+                this.themeToggle = document.getElementById('themeToggle');
+                this.init();
+            }
+
+            init() {
+                this.applyTheme(this.appState.currentTheme);
+                this.themeToggle?.addEventListener('click', () => this.toggleTheme());
                 
-                if (savedTheme === 'light') {
-                    document.body.classList.add('light-mode');
-                    themeToggle.textContent = 'Mode Sombre';
-                } else {
-                    document.body.classList.remove('light-mode');
-                    themeToggle.textContent = 'Mode Clair';
-                }
-            }
-            
-            function toggleTheme() {
-                const isLightMode = document.body.classList.contains('light-mode');
-                
-                if (isLightMode) {
-                    document.body.classList.remove('light-mode');
-                    themeToggle.textContent = 'Mode Clair';
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    document.body.classList.add('light-mode');
-                    themeToggle.textContent = 'Mode Sombre';
-                    localStorage.setItem('theme', 'light');
-                }
-                
-                themeToggle.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    themeToggle.style.transform = 'scale(1)';
-                }, 150);
-            }
-            
-            // ========== GESTION DU LOADING ==========
-            function hideLoadingOverlay() {
-                setTimeout(() => {
-                    loadingOverlay.classList.add('hidden');
-                    setTimeout(() => {
-                        loadingOverlay.style.display = 'none';
-                    }, 500);
-                }, 1200);
-            }
-            
-            // ========== NAVIGATION SMOOTH SCROLL ==========
-            function initSmoothScroll() {
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        
-                        const targetId = this.getAttribute('href');
-                        smoothScrollTo(targetId);
-                        
-                        this.style.color = 'var(--accent)';
-                        setTimeout(() => {
-                            this.style.color = '';
-                        }, 300);
-                    });
+                // Écouter les changements de préférence système
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                    if (!localStorage.getItem('theme')) {
+                        this.applyTheme(e.matches ? 'dark' : 'light');
+                    }
                 });
             }
-            
-            // ========== GESTION DU LOGO CLICK ==========
-            function initLogoClick() {
-                logoLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    smoothScrollTo('#about');
+
+            toggleTheme() {
+                const newTheme = this.appState.currentTheme === 'dark' ? 'light' : 'dark';
+                this.applyTheme(newTheme);
+                this.appState.setTheme(newTheme);
+                Utils.announceToScreenReader(Thème changé vers ${newTheme === 'dark' ? 'sombre' : 'clair'});
+            }
+
+            applyTheme(theme) {
+                if (theme === 'light') {
+                    document.body.classList.add('light-mode');
+                    this.themeToggle.innerHTML = '<span>Mode Sombre</span>';
+                } else {
+                    document.body.classList.remove('light-mode');
+                    this.themeToggle.innerHTML = '<span>Mode Clair</span>';
+                }
+            }
+        }
+
+        // Gestionnaire de menu mobile
+        class MobileMenuManager {
+            constructor() {
+                this.mobileToggle = document.getElementById('mobileMenuToggle');
+                this.mobileNav = document.getElementById('mobileNav');
+                this.init();
+            }
+
+            init() {
+                this.mobileToggle?.addEventListener('click', () => this.toggleMobileMenu());
+                
+                // Fermer le menu lors du clic sur un lien
+                const mobileLinks = this.mobileNav?.querySelectorAll('a');
+                mobileLinks?.forEach(link => {
+                    link.addEventListener('click', () => this.closeMobileMenu());
+                });
+
+                // Fermer le menu lors du scroll
+                window.addEventListener('scroll', () => this.closeMobileMenu());
+            }
+
+            toggleMobileMenu() {
+                const isActive = this.mobileNav?.classList.contains('active');
+                if (isActive) {
+                    this.closeMobileMenu();
+                } else {
+                    this.openMobileMenu();
+                }
+            }
+
+            openMobileMenu() {
+                this.mobileNav?.classList.add('active');
+                this.mobileToggle.innerHTML = '<span>&times;</span>';
+                Utils.announceToScreenReader('Menu mobile ouvert');
+            }
+
+            closeMobileMenu() {
+                this.mobileNav?.classList.remove('active');
+                this.mobileToggle.innerHTML = '<span>☰</span>';
+            }
+        }
+
+        // Gestionnaire de chargement paresseux
+        class LazyLoadManager {
+            constructor() {
+                this.imageObserver = null;
+                this.init();
+            }
+
+            init() {
+                setTimeout(() => {
+                    if ('IntersectionObserver' in window) {
+                        this.imageObserver = new IntersectionObserver(
+                            this.handleImageIntersection.bind(this),
+                            {
+                                rootMargin: CONFIG.LAZY_LOADING_MARGIN,
+                                threshold: 0.1
+                            }
+                        );
+                        this.observeImages();
+                    } else {
+                        this.loadAllImages();
+                    }
+                }, 100);
+            }
+
+            observeImages() {
+                const images = document.querySelectorAll('.photo-item img');
+                images.forEach(img => {
+                    this.imageObserver.observe(img);
+                    this.loadImage(img);
+                });
+            }
+
+            handleImageIntersection(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        this.loadImage(img);
+                        this.imageObserver.unobserve(img);
+                    }
+                });
+            }
+
+            loadImage(img) {
+                const photoItem = img.closest('.photo-item');
+                
+                if (img.complete && img.naturalHeight !== 0) {
+                    photoItem?.classList.remove('loading');
+                    photoItem?.classList.add('loaded');
+                    return;
+                }
+
+                img.addEventListener('load', () => {
+                    photoItem?.classList.remove('loading');
+                    photoItem?.classList.add('loaded');
+                }, { once: true });
+
+                img.addEventListener('error', () => {
+                    photoItem?.classList.remove('loading');
+                    photoItem?.classList.add('error');
+                    console.warn('Erreur de chargement de l\'image:', img.src);
+                }, { once: true });
+            }
+
+            loadAllImages() {
+                const images = document.querySelectorAll('.photo-item img');
+                images.forEach(img => this.loadImage(img));
+            }
+        }
+
+        // Gestionnaire d'effets visuels
+        class EffectsManager {
+            constructor(appState) {
+                this.appState = appState;
+            }
+
+            createParticles(x, y) {
+                if (this.appState.reducedMotion) return;
+
+                for (let i = 0; i < CONFIG.PARTICLES_COUNT; i++) {
+                    const particle = Utils.createElement('div', 'particle');
                     
-                    // Animation de feedback
-                    this.style.transform = 'scale(0.95)';
+                    const randomX = Utils.getRandomInRange(-150, 150);
+                    const randomY = Utils.getRandomInRange(-150, 150);
+                    
+                    particle.style.cssText = `
+                        left: ${x}px;
+                        top: ${y}px;
+                        --random-x: ${randomX}px;
+                        --random-y: ${randomY}px;
+                        animation-delay: ${i * 0.05}s;
+                    `;
+                    
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 1500);
+                }
+            }
+
+            addClickEffect(element) {
+                element.addEventListener('click', (e) => {
+                    const rect = element.getBoundingClientRect();
+                    const x = rect.left + rect.width / 2;
+                    const y = rect.top + rect.height / 2;
+                    
+                    this.createParticles(x, y);
+                    
+                    element.style.transform = 'scale(0.98)';
                     setTimeout(() => {
-                        this.style.transform = 'scale(1.05)';
-                        setTimeout(() => {
-                            this.style.transform = 'scale(1)';
-                        }, 150);
+                        element.style.transform = '';
                     }, 100);
                 });
             }
-            
-            // ========== GESTION DES BOUTONS CONTACT ==========
-            function initContactButtons() {
-                // Bouton Email
-                emailButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const email = 'omar.bougamha@gmail.com';
-                    
-                    // Animation du bouton
-                    this.style.transform = 'translateY(-5px) scale(0.95)';
-                    this.style.opacity = '0.8';
-                    
-                    copyToClipboard(email)
-                        .then(() => {
-                            showToast('📧 Email copié: ' + email, 'success');
-                        })
-                        .catch(() => {
-                            showToast('❌ Erreur lors de la copie. Email: ' + email, 'error');
-                        })
-                        .finally(() => {
-                            setTimeout(() => {
-                                this.style.transform = 'translateY(-3px) scale(1)';
-                                this.style.opacity = '1';
-                            }, 200);
-                        });
+        }
+
+        // Gestionnaire de vue détaillée des reels
+        class ReelsDetailManager {
+            constructor(appState, effectsManager) {
+                this.appState = appState;
+                this.effectsManager = effectsManager;
+                this.reelsDetailView = document.getElementById('reelsDetailView');
+                this.reelsDetailClose = document.getElementById('reelsDetailClose');
+                this.reelsDetailVideo = document.getElementById('reelsDetailVideo');
+                this.reelsDescriptionTitle = document.getElementById('reelsDescriptionTitle');
+                this.reelsDescriptionContent = document.getElementById('reelsDescriptionContent');
+                this.init();
+            }
+
+            init() {
+                // Ajouter des event listeners aux reels
+                const reelItems = document.querySelectorAll('.video-item.reel');
+                reelItems.forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const reelId = item.getAttribute('data-reel-id');
+                        this.openReelsDetail(reelId, item);
+                    });
+                    this.effectsManager.addClickEffect(item);
                 });
 
-                // Bouton Téléphone
-                phoneButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const phone = '+216 58 098 724';
-                    
-                    // Animation du bouton
-                    this.style.transform = 'translateY(-5px) scale(0.95)';
-                    this.style.opacity = '0.8';
-                    
-                    copyToClipboard(phone)
-                        .then(() => {
-                            showToast('📞 Téléphone copié: ' + phone, 'success');
-                        })
-                        .catch(() => {
-                            showToast('❌ Erreur lors de la copie. Numéro: ' + phone, 'error');
-                        })
-                        .finally(() => {
-                            setTimeout(() => {
-                                this.style.transform = 'translateY(-3px) scale(1)';
-                                this.style.opacity = '1';
-                            }, 200);
-                        });
+                // Event listeners pour fermer la vue détaillée
+                this.reelsDetailClose?.addEventListener('click', () => this.closeReelsDetail());
+                this.reelsDetailView?.addEventListener('click', (e) => {
+                    if (e.target === this.reelsDetailView) this.closeReelsDetail();
                 });
-            }
-            
-            // ========== GESTION DU HEADER AU SCROLL ==========
-            function initHeaderScroll() {
-                const header = document.querySelector('header');
-                
-                window.addEventListener('scroll', function() {
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    
-                    if (scrollTop > 100) {
-                        header.style.background = document.body.classList.contains('light-mode') 
-                            ? 'rgba(255, 255, 255, 0.98)' 
-                            : 'rgba(10, 10, 10, 0.98)';
-                        header.style.backdropFilter = 'blur(20px)';
-                    } else {
-                        header.style.background = document.body.classList.contains('light-mode') 
-                            ? 'rgba(255, 255, 255, 0.95)' 
-                            : 'rgba(10, 10, 10, 0.95)';
-                        header.style.backdropFilter = 'blur(10px)';
+
+                // Fermer avec Escape
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.appState.isReelsDetailOpen) {
+                        this.closeReelsDetail();
                     }
                 });
             }
-            
-            // ========== ANIMATIONS D'ENTRÉE AVEC INTERSECTION OBSERVER ==========
-            function initScrollAnimations() {
-                const observerOptions = {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -100px 0px'
-                };
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                            
-                            // Animation en cascade pour les éléments de galerie
-                            if (entry.target.classList.contains('gallery-item')) {
-                                const index = Array.from(document.querySelectorAll('.gallery-item')).indexOf(entry.target);
-                                entry.target.style.transitionDelay = `${index * 0.2}s`;
-                            }
+
+            openReelsDetail(reelId, reelElement) {
+                const reelData = REELS_DATA[reelId];
+                if (!reelData) return;
+
+                // Récupérer la source vidéo depuis l'attribut data
+                const videoSource = reelElement.getAttribute('data-video-src');
+
+                if (videoSource) {
+                    this.reelsDetailVideo.querySelector('source').src = videoSource;
+                    this.reelsDetailVideo.load();
+                }
+
+                // Mettre à jour le titre et la description
+                this.reelsDescriptionTitle.textContent = reelData.title;
+                this.reelsDescriptionContent.innerHTML = reelData.description;
+
+                // Ajouter les tags techniques
+                if (reelData.tags) {
+                    const tagsContainer = Utils.createElement('div', 'reels-tech-tags');
+                    reelData.tags.forEach(tag => {
+                        const tagElement = Utils.createElement('span', 'reels-tech-tag');
+                        tagElement.textContent = tag;
+                        tagsContainer.appendChild(tagElement);
+                    });
+                    this.reelsDescriptionContent.appendChild(tagsContainer);
+                }
+
+                // Afficher la vue détaillée
+                this.reelsDetailView.classList.add('active');
+                this.reelsDetailView.setAttribute('aria-hidden', 'false');
+                this.appState.toggleReelsDetail(true);
+
+                // Focus sur le bouton de fermeture
+                setTimeout(() => this.reelsDetailClose?.focus(), 100);
+
+                Utils.announceToScreenReader(Vue détaillée ouverte pour ${reelData.title});
+            }
+
+            closeReelsDetail() {
+                this.reelsDetailView.classList.remove('active');
+                this.reelsDetailView.setAttribute('aria-hidden', 'true');
+                this.appState.toggleReelsDetail(false);
+
+                // Arrêter la vidéo
+                this.reelsDetailVideo.pause();
+                this.reelsDetailVideo.currentTime = 0;
+
+                Utils.announceToScreenReader('Vue détaillée fermée');
+            }
+        }
+        // Gestionnaire de vue détaillée des vidéos YouTube
+        class YoutubeDetailManager {
+            constructor(appState, effectsManager) {
+                this.appState = appState;
+                this.effectsManager = effectsManager;
+                this.youtubeDetailView = document.getElementById('youtubeDetailView');
+                this.youtubeDetailClose = document.getElementById('youtubeDetailClose');
+                this.youtubeDetailContainer = document.getElementById('youtubeDetailContainer');
+                this.youtubeDescriptionTitle = document.getElementById('youtubeDescriptionTitle');
+                this.youtubeDescriptionContent = document.getElementById('youtubeDescriptionContent');
+                this.init();
+            }
+
+            init() {
+                // Ajouter des event listeners aux vidéos YouTube (exclure les reels)
+                const youtubeItems = document.querySelectorAll('.video-item:not(.reel)');
+                youtubeItems.forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const youtubeId = item.getAttribute('data-youtube-id');
+                        if (youtubeId) {
+                            this.openYoutubeDetail(youtubeId, item);
                         }
                     });
-                }, observerOptions);
-                
-                const elementsToAnimate = document.querySelectorAll(
-                    '.gallery-item, .contact-content, .section-title, .gallery-subtitle'
-                );
-                
-                elementsToAnimate.forEach(el => {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(50px)';
-                    el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-                    observer.observe(el);
+                    this.effectsManager.addClickEffect(item);
                 });
-            }
-            
-            // ========== GESTION DES GALERIES AVEC ANIMATIONS AMÉLIORÉES ==========
-            function initGallery() {
-                galleryItems.forEach((item, index) => {
-                    // Pas de rotation sur mobile pour un alignement parfait
-                    const isMobile = window.innerWidth <= 768;
-                    
-                    if (!isMobile) {
-                        // Rotation alternée seulement sur desktop
-                        item.style.transform = index % 2 === 0 ? 'rotate(-1deg)' : 'rotate(1deg)';
-                        
-                        item.addEventListener('mouseenter', function() {
-                            this.style.transform = 'translateY(-15px) scale(1.03) rotate(0deg)';
-                            this.style.zIndex = '10';
-                        });
-                        
-                        item.addEventListener('mouseleave', function() {
-                            const rotation = index % 2 === 0 ? '-1deg' : '1deg';
-                            this.style.transform = `translateY(0) scale(1) rotate(${rotation})`;
-                            this.style.zIndex = '1';
-                        });
-                    } else {
-                        // Alignement parfait sur mobile
-                        item.style.transform = 'rotate(0deg)';
+
+                // Event listeners pour fermer la vue détaillée
+                this.youtubeDetailClose?.addEventListener('click', () => this.closeYoutubeDetail());
+                this.youtubeDetailView?.addEventListener('click', (e) => {
+                    if (e.target === this.youtubeDetailView) this.closeYoutubeDetail();
+                });
+
+                // Fermer avec Escape
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.appState.isYoutubeDetailOpen) {
+                        this.closeYoutubeDetail();
                     }
-                    
-                    // Animation au clic
-                    item.addEventListener('click', function() {
-                        this.style.transform = isMobile 
-                            ? 'translateY(-4px) scale(0.98) rotate(0deg)' 
-                            : 'translateY(-15px) scale(0.98) rotate(0deg)';
-                        setTimeout(() => {
-                            this.style.transform = isMobile 
-                                ? 'translateY(-8px) scale(1.02) rotate(0deg)' 
-                                : 'translateY(-15px) scale(1.03) rotate(0deg)';
-                        }, 150);
-                    });
                 });
             }
-            
-            // ========== GESTION DES LIENS SOCIAUX ==========
-            function initSocialLinks() {
-                const socialLinks = document.querySelectorAll('.social-link');
-                
-                socialLinks.forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        this.style.transform = 'translateY(-5px) scale(0.95)';
-                        setTimeout(() => {
-                            this.style.transform = 'translateY(-3px) scale(1)';
-                        }, 200);
-                        
-                        if (this.href !== '#') {
-                            setTimeout(() => {
-                                window.open(this.href, '_blank');
-                            }, 200);
+
+            openYoutubeDetail(youtubeId, youtubeElement) {
+                const youtubeData = YOUTUBE_DATA[youtubeId];
+                if (!youtubeData) return;
+
+                // Créer l'iframe YouTube
+                const iframe = document.createElement('iframe');
+                iframe.src = https://www.youtube.com/embed/${youtubeData.youtubeId}?autoplay=1&rel=0;
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.borderRadius = 'var(--radius-lg)';
+
+                // Vider et ajouter l'iframe
+                this.youtubeDetailContainer.innerHTML = '';
+                this.youtubeDetailContainer.appendChild(iframe);
+
+                // Mettre à jour le titre et la description
+                this.youtubeDescriptionTitle.textContent = youtubeData.title;
+                this.youtubeDescriptionContent.innerHTML = youtubeData.description;
+
+                // Ajouter les tags techniques
+                if (youtubeData.tags) {
+                    const tagsContainer = Utils.createElement('div', 'youtube-tech-tags');
+                    youtubeData.tags.forEach(tag => {
+                        const tagElement = Utils.createElement('span', 'youtube-tech-tag');
+                        tagElement.textContent = tag;
+                        tagsContainer.appendChild(tagElement);
+                    });
+                    this.youtubeDescriptionContent.appendChild(tagsContainer);
+                }
+
+                // Afficher la vue détaillée
+                this.youtubeDetailView.classList.add('active');
+                this.youtubeDetailView.setAttribute('aria-hidden', 'false');
+                this.appState.toggleYoutubeDetail(true);
+
+                // Focus sur le bouton de fermeture
+                setTimeout(() => this.youtubeDetailClose?.focus(), 100);
+
+                Utils.announceToScreenReader(Vue détaillée ouverte pour ${youtubeData.title});
+            }
+
+            closeYoutubeDetail() {
+                this.youtubeDetailView.classList.remove('active');
+                this.youtubeDetailView.setAttribute('aria-hidden', 'true');
+                this.appState.toggleYoutubeDetail(false);
+
+                // Vider le container pour arrêter la vidéo
+                setTimeout(() => {
+                    this.youtubeDetailContainer.innerHTML = '';
+                }, 300);
+
+                Utils.announceToScreenReader('Vue détaillée fermée');
+            }
+        }
+        // Gestionnaire de lightbox
+        class LightboxManager {
+            constructor(appState, effectsManager) {
+                this.appState = appState;
+                this.effectsManager = effectsManager;
+                this.lightbox = document.getElementById('lightbox');
+                this.lightboxImage = document.getElementById('lightboxImage');
+                this.lightboxClose = document.getElementById('lightboxClose');
+                this.currentImageIndex = 0;
+                this.images = [];
+                this.init();
+            }
+
+            init() {
+                setTimeout(() => {
+                    this.images = Array.from(document.querySelectorAll('.photo-item img'));
+                    
+                    this.images.forEach((img, index) => {
+                        const photoItem = img.closest('.photo-item');
+                        if (photoItem) {
+                            photoItem.addEventListener('click', () => this.openLightbox(index));
+                            this.effectsManager.addClickEffect(photoItem);
                         }
                     });
-                });
+
+                    this.lightboxClose?.addEventListener('click', () => this.closeLightbox());
+                    this.lightbox?.addEventListener('click', (e) => {
+                        if (e.target === this.lightbox) this.closeLightbox();
+                    });
+
+                    document.addEventListener('keydown', (e) => this.handleKeydown(e));
+                }, 100);
             }
-            
-            // ========== MENU MOBILE PROFESSIONNEL ==========
-            function initMobileMenu() {
-                const nav = document.querySelector('nav');
-                const hamburger = document.createElement('button');
-                hamburger.innerHTML = '<span></span><span></span><span></span>';
-                hamburger.className = 'mobile-menu-toggle';
-                hamburger.style.cssText = `
-                    display: none;
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                    flex-direction: column;
-                    gap: 4px;
-                    padding: 8px;
-                    transition: all 0.3s ease;
-                `;
+
+            openLightbox(index) {
+                if (index < 0 || index >= this.images.length) return;
                 
-                // Style des barres du hamburger
-                const spans = hamburger.querySelectorAll('span');
-                spans.forEach(span => {
-                    span.style.cssText = `
-                        display: block;
-                        width: 25px;
-                        height: 2px;
-                        background: var(--text-primary);
-                        transition: all 0.3s ease;
-                    `;
-                });
+                this.currentImageIndex = index;
+                const img = this.images[index];
                 
-                nav.appendChild(hamburger);
+                this.lightboxImage.src = img.src;
+                this.lightboxImage.alt = img.alt;
                 
-                hamburger.addEventListener('click', function() {
-                    const navLinks = document.querySelector('.nav-links');
-                    const isVisible = navLinks.style.display === 'flex';
-                    
-                    if (isVisible) {
-                        navLinks.style.display = 'none';
-                        spans[0].style.transform = 'rotate(0deg)';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'rotate(0deg)';
-                    } else {
-                        navLinks.style.display = 'flex';
-                        navLinks.style.flexDirection = 'column';
-                        navLinks.style.position = 'absolute';
-                        navLinks.style.top = '100%';
-                        navLinks.style.left = '0';
-                        navLinks.style.right = '0';
-                        navLinks.style.background = 'var(--bg-secondary)';
-                        navLinks.style.padding = '2rem';
-                        navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                        navLinks.style.backdropFilter = 'blur(20px)';
-                        
-                        // Animation du hamburger en X
-                        spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
-                        spans[1].style.opacity = '0';
-                        spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
-                    }
-                });
+                document.getElementById('lightbox-description').textContent = img.alt;
                 
-                function checkMobileMenu() {
-                    if (window.innerWidth <= 768) {
-                        hamburger.style.display = 'flex';
-                    } else {
-                        hamburger.style.display = 'none';
-                        document.querySelector('.nav-links').style.display = 'flex';
-                        document.querySelector('.nav-links').style.position = 'static';
-                        document.querySelector('.nav-links').style.flexDirection = 'row';
-                    }
+                this.lightbox.classList.add('active');
+                this.lightbox.setAttribute('aria-hidden', 'false');
+                this.appState.toggleLightbox(true);
+                
+                setTimeout(() => this.lightboxClose?.focus(), 100);
+                
+                Utils.announceToScreenReader('Image agrandie ouverte');
+            }
+
+            closeLightbox() {
+                this.lightbox.classList.remove('active');
+                this.lightbox.setAttribute('aria-hidden', 'true');
+                this.appState.toggleLightbox(false);
+                
+                if (this.images[this.currentImageIndex]) {
+                    const photoItem = this.images[this.currentImageIndex].closest('.photo-item');
+                    photoItem?.focus();
                 }
                 
-                window.addEventListener('resize', checkMobileMenu);
-                checkMobileMenu();
+                Utils.announceToScreenReader('Image agrandie fermée');
             }
-            
-            // ========== INITIALISATION ==========
-            function init() {
+
+            navigateToNext() {
+                this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
+                this.openLightbox(this.currentImageIndex);
+            }
+
+            navigateToPrevious() {
+                this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
+                this.openLightbox(this.currentImageIndex);
+            }
+
+            handleKeydown(e) {
+                if (!this.appState.isLightboxOpen) return;
+
+                switch (e.key) {
+                    case 'Escape':
+                        this.closeLightbox();
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        this.navigateToNext();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        this.navigateToPrevious();
+                        break;
+                }
+            }
+        }
+
+        // Gestionnaire de modal vidéo
+        class VideoModalManager {
+            constructor(appState, effectsManager) {
+                this.appState = appState;
+                this.effectsManager = effectsManager;
+                this.videoModal = document.getElementById('videoModal');
+                this.videoModalClose = document.getElementById('videoModalClose');
+                this.videoModalContainer = document.getElementById('videoModalContainer');
+                this.init();
+            }
+
+            init() {
+                this.videoModalClose?.addEventListener('click', () => this.closeVideoModal());
+                this.videoModal?.addEventListener('click', (e) => {
+                    if (e.target === this.videoModal) this.closeVideoModal();
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.appState.isVideoModalOpen) {
+                        this.closeVideoModal();
+                    }
+                });
+            }
+
+            openVideoModal(e) {
+                const videoItem = e.currentTarget;
+                const iframe = videoItem.querySelector('iframe');
+                const video = videoItem.querySelector('video');
+                
+                this.videoModalContainer.innerHTML = '';
+                
+                if (iframe) {
+                    const newIframe = iframe.cloneNode(true);
+                    newIframe.style.cssText = `
+                        width: 100%;
+                        height: 100%;
+                        border-radius: var(--radius-md);
+                    `;
+                    this.videoModalContainer.appendChild(newIframe);
+                } else if (video) {
+                    const newVideo = video.cloneNode(true);
+                    newVideo.style.cssText = `
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                        border-radius: var(--radius-md);
+                    `;
+                    newVideo.controls = true;
+                    newVideo.autoplay = true;
+                    this.videoModalContainer.appendChild(newVideo);
+                }
+                
+                this.videoModal.classList.add('active');
+                this.videoModal.setAttribute('aria-hidden', 'false');
+                this.appState.toggleVideoModal(true);
+                
+                setTimeout(() => this.videoModalClose?.focus(), 100);
+                Utils.announceToScreenReader('Vidéo ouverte en plein écran');
+            }
+
+            closeVideoModal() {
+                this.videoModal.classList.remove('active');
+                this.videoModal.setAttribute('aria-hidden', 'true');
+                this.appState.toggleVideoModal(false);
+                
+                const video = this.videoModalContainer.querySelector('video');
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+                
+                setTimeout(() => {
+                    this.videoModalContainer.innerHTML = '';
+                }, 300);
+                
+                Utils.announceToScreenReader('Vidéo fermée');
+            }
+        }
+
+        // Gestionnaire de navigation par sections
+        class SectionNavigationManager {
+            constructor() {
+                this.sections = document.querySelectorAll('.gallery-section');
+                this.navLinks = document.querySelectorAll('.section-nav a');
+                this.header = document.querySelector('header');
+                this.lastScrollY = window.scrollY;
+                this.init();
+            }
+
+            init() {
+                this.initSectionObserver();
+                this.initSmoothScroll();
+                this.initHeaderScroll();
+            }
+
+            initSectionObserver() {
+                if (!('IntersectionObserver' in window)) return;
+
+                const observer = new IntersectionObserver(
+                    (entries) => this.handleSectionIntersection(entries),
+                    {
+                        root: null,
+                        rootMargin: '-40% 0px -40% 0px',
+                        threshold: 0
+                    }
+                );
+
+                this.sections.forEach(section => observer.observe(section));
+            }
+
+            handleSectionIntersection(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.getAttribute('id');
+                        this.updateActiveNavLink(sectionId);
+                    }
+                });
+            }
+
+            updateActiveNavLink(activeSectionId) {
+                this.navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === #${activeSectionId}) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            initSmoothScroll() {
+                const allNavLinks = document.querySelectorAll('a[href^="#"]');
+                
+                allNavLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            const offsetTop = targetElement.offsetTop - 100;
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+                            
+                            targetElement.focus({ preventScroll: true });
+                            Utils.announceToScreenReader(Navigation vers la section ${targetElement.querySelector('h2')?.textContent});
+                        }
+                    });
+                });
+            }
+
+            initHeaderScroll() {
+                window.addEventListener('scroll', Utils.throttle(() => {
+                    const currentScrollY = window.scrollY;
+                    
+                    if (currentScrollY > this.lastScrollY && currentScrollY > 100) {
+                        this.header.style.transform = 'translateY(-100%)';
+                    } else {
+                        this.header.style.transform = 'translateY(0)';
+                    }
+                    
+                    if (currentScrollY > 50) {
+                        this.header.classList.add('scrolled');
+                    } else {
+                        this.header.classList.remove('scrolled');
+                    }
+                    
+                    this.lastScrollY = currentScrollY;
+                }, 16));
+            }
+        }
+
+        // Gestionnaire d'animations d'entrée
+        class AnimationManager {
+            constructor(appState) {
+                this.appState = appState;
+                this.animatedElements = new Set();
+                this.init();
+            }
+
+            init() {
+                if (this.appState.reducedMotion) return;
+
+                setTimeout(() => {
+                    const animateElements = document.querySelectorAll('.photo-item, .video-item');
+                    
+                    if ('IntersectionObserver' in window) {
+                        this.initIntersectionObserver(animateElements);
+                    } else {
+                        this.animateAllElements(animateElements);
+                    }
+                }, 200);
+            }
+
+            initIntersectionObserver(elements) {
+                const observer = new IntersectionObserver(
+                    (entries) => this.handleAnimationIntersection(entries),
+                    { 
+                        threshold: CONFIG.INTERSECTION_THRESHOLD,
+                        rootMargin: '0px 0px -50px 0px'
+                    }
+                );
+
+                elements.forEach((element, index) => {
+                    element.style.cssText = `
+                        opacity: 0;
+                        transform: translateY(30px);
+                        transition: opacity 0.8s ease-out ${index * 0.1}s, 
+                                transform 0.8s ease-out ${index * 0.1}s;
+                    `;
+                    observer.observe(element);
+                });
+            }
+
+            handleAnimationIntersection(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !this.animatedElements.has(entry.target)) {
+                        this.animatedElements.add(entry.target);
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+
+            animateAllElements(elements) {
+                elements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }, index * CONFIG.ANIMATION_DELAY);
+                });
+            }
+        }
+
+        // Gestionnaire d'erreurs média
+        class MediaErrorManager {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.handleImageErrors();
+                this.handleVideoErrors();
+            }
+
+            handleImageErrors() {
+                const images = document.querySelectorAll('img');
+                images.forEach(img => {
+                    img.addEventListener('error', (e) => {
+                        console.warn('Erreur de chargement de l\'image:', e.target.src);
+                        const photoItem = e.target.closest('.photo-item');
+                        if (photoItem) {
+                            photoItem.classList.add('error');
+                            photoItem.setAttribute('aria-label', 'Image indisponible');
+                        }
+                    });
+                });
+            }
+
+            handleVideoErrors() {
+                const videos = document.querySelectorAll('video');
+                videos.forEach(video => {
+                    video.addEventListener('error', (e) => {
+                        console.warn('Erreur de chargement de la vidéo:', e.target.src);
+                        const videoItem = e.target.closest('.video-item');
+                        if (videoItem) {
+                            videoItem.classList.add('error');
+                            videoItem.setAttribute('aria-label', 'Vidéo indisponible');
+                        }
+                    });
+                });
+            }
+        }
+
+        // Gestionnaire de performance
+        class PerformanceManager {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.monitorPerformance();
+                this.optimizeScrolling();
+            }
+
+            monitorPerformance() {
+                window.addEventListener('load', () => {
+                    if (performance.timing) {
+                        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                        console.log(Temps de chargement: ${loadTime}ms);
+                    }
+                });
+            }
+
+            optimizeScrolling() {
+                const passiveEvents = ['scroll', 'touchstart', 'touchmove', 'wheel'];
+                passiveEvents.forEach(event => {
+                    document.addEventListener(event, () => {}, { passive: true });
+                });
+            }
+        }
+
+        // Application principale
+        class GalleryApp {
+            constructor() {
+                this.appState = new AppState();
+                this.managers = {};
+                this.init();
+            }
+
+            async init() {
                 try {
-                    // Initialiser toutes les fonctionnalités
-                    initTheme();
-                    hideLoadingOverlay();
-                    initSmoothScroll();
-                    initLogoClick();
-                    initContactButtons();
-                    initHeaderScroll();
-                    initScrollAnimations();
-                    initGallery();
-                    initSocialLinks();
-                    initMobileMenu();
-                    
-                    // Event listeners
-                    themeToggle.addEventListener('click', toggleTheme);
-                    
-                    console.log('Portfolio mobile optimisé initialisé avec succès!');
+                    if (document.readyState === 'loading') {
+                        await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve));
+                    }
+
+                    this.initManagers();
+                    this.hideLoadingOverlay();
                     
                 } catch (error) {
                     console.error('Erreur lors de l\'initialisation:', error);
+                    this.handleInitError();
                 }
             }
-            
-            // ========== LANCEMENT ==========
-            init();
+
+            initManagers() {
+                this.managers.theme = new ThemeManager(this.appState);
+                this.managers.mobileMenu = new MobileMenuManager();
+                this.managers.performance = new PerformanceManager();
+                this.managers.mediaError = new MediaErrorManager();
+                
+                this.managers.effects = new EffectsManager(this.appState);
+                this.managers.sectionNavigation = new SectionNavigationManager();
+                
+                setTimeout(() => {
+                    this.managers.lazyLoad = new LazyLoadManager();
+                    this.managers.reelsDetail = new ReelsDetailManager(this.appState, this.managers.effects);
+                    this.managers.youtubeDetail = new YoutubeDetailManager(this.appState, this.managers.effects);
+                    this.managers.lightbox = new LightboxManager(this.appState, this.managers.effects);
+                    this.managers.videoModal = new VideoModalManager(this.appState, this.managers.effects);
+                    this.managers.animation = new AnimationManager(this.appState);
+                }, 100);
+            }
+
+            hideLoadingOverlay() {
+                setTimeout(() => {
+                    const loadingOverlay = document.getElementById('loadingOverlay');
+                    if (loadingOverlay) {
+                        loadingOverlay.classList.add('hidden');
+                        this.appState.isLoading = false;
+                    }
+                }, CONFIG.LOADING_DELAY);
+            }
+
+            handleInitError() {
+                const loadingOverlay = document.getElementById('loadingOverlay');
+                if (loadingOverlay) {
+                    loadingOverlay.innerHTML = `
+                        <div style="text-align: center; color: var(--text-primary);">
+                            <h2>Erreur de chargement</h2>
+                            <p>Veuillez recharger la page</p>
+                            <button onclick="window.location.reload()" 
+                                    style="margin-top: 1rem; padding: 0.5rem 1rem; 
+                                        background: var(--accent); color: white; 
+                                        border: none; border-radius: 5px; cursor: pointer;">
+                                Recharger
+                            </button>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Gestion globale des erreurs
+        window.addEventListener('error', (e) => {
+            console.error('Erreur JavaScript:', e.error);
         });
+
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Promise rejetée:', e.reason);
+        });
+
+        // Démarrage de l'application
+        const app = new GalleryApp();
+
+        // Export pour les tests (optionnel)
+        if (typeof module !== 'undefined' && module.exports) {
+            module.exports = { GalleryApp, Utils };
+        }
     </script>
 </body>
 </html>
