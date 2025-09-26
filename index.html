@@ -1185,7 +1185,7 @@
             // ========== FONCTIONS UTILITAIRES ==========
             function showToast(message, type = 'success') {
                 toast.textContent = message;
-                toast.className = toast ${type};
+                toast.className = `toast ${type}`;
                 toast.classList.add('show');
                 
                 setTimeout(() => {
@@ -1397,7 +1397,7 @@
                             // Animation en cascade pour les éléments de galerie
                             if (entry.target.classList.contains('gallery-item')) {
                                 const index = Array.from(document.querySelectorAll('.gallery-item')).indexOf(entry.target);
-                                entry.target.style.transitionDelay = ${index * 0.2}s;
+                                entry.target.style.transitionDelay = `${index * 0.2}s`;
                             }
                         }
                     });
@@ -1432,7 +1432,7 @@
                         
                         item.addEventListener('mouseleave', function() {
                             const rotation = index % 2 === 0 ? '-1deg' : '1deg';
-                            this.style.transform = translateY(0) scale(1) rotate(${rotation});
+                            this.style.transform = `translateY(0) scale(1) rotate(${rotation})`;
                             this.style.zIndex = '1';
                         });
                     } else {
